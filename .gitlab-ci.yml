@@ -1,0 +1,76 @@
+stages:
+- build
+- release
+- sonar
+
+.default_tags:
+  tags: &default_tags
+  - node10
+
+build:
+  tags: *default_tags
+  stage: build
+  script:
+  - bash senior-ci/frontend/npm/bibliotecas/ci.sh -b $CI_PROJECT_NAME $CI_PROJECT_ID
+    $CI_BUILD_REF $CI_BUILD_REF_NAME
+  only:
+  - branches
+  except:
+  - develop
+  - master
+
+releaseSnapshot:
+  tags: *default_tags
+  stage: release
+  when: manual
+  script:
+  - bash senior-ci/frontend/npm/bibliotecas/ci.sh -s $CI_COMMIT_REF_SLUG
+  except:
+  - master
+  - tags
+
+releasePatch:
+  tags: *default_tags
+  stage: release
+  when: manual
+  script:
+  - bash senior-ci/frontend/npm/bibliotecas/ci.sh -r patch
+  only:
+  - develop
+
+releaseMinor:
+  tags: *default_tags
+  stage: release
+  when: manual
+  script:
+  - bash senior-ci/frontend/npm/bibliotecas/ci.sh -r minor
+  only:
+  - develop
+
+releaseMajor:
+  tags: *default_tags
+  stage: release
+  when: manual
+  script:
+  - bash senior-ci/frontend/npm/bibliotecas/ci.sh -r major
+  only:
+  - develop
+
+package:
+  tags: *default_tags
+  stage: release
+  script:
+  - bash senior-ci/frontend/npm/bibliotecas/ci.sh -p
+  only:
+  - tags
+  - /^v?\d+\-\d+\-\d+\z/
+
+sendInfoSonarQube:
+  tags: *default_tags
+  stage: sonar
+  script:
+  - bash senior-ci/frontend/npm/ci.sh -x $CI_PROJECT_NAME $CI_PROJECT_ID
+  only:
+  - tags
+  - /^v?\d+\-\d+\-\d+\z/
+  allow_failure: false
