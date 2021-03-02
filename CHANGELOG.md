@@ -1,5 +1,3 @@
-# TEMPLATE CHANGELOG (ALTERAR)
-
 # {version}
 [{date}]
 
@@ -7,10 +5,10 @@
 * N/A.
 
 ### Novas funcionalidades
-* [TASK-XXXX](link-task-jira) - Repositório criado pelo Bot Bastion do Devops
+* Criando projeto inicial com a geração de pessoas e apis.
 
 ### Melhorias
-* [#TASK-XXXX] - AS task também podem ser referenciadas com o # (hash) por conta da integração jira/gitlab
+* N/A.
 
 ### Correções
 * N/A.
