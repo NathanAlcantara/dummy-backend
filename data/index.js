@@ -41,7 +41,7 @@ const schema = {
         required: ["id", "name", "age", "email", "phone"],
       },
     },
-    address: {
+    addresses: {
       type: "array",
       minItems: 100,
       maxItems: 100,
@@ -72,8 +72,43 @@ const schema = {
         required: ["id", "city", "county", "state", "zipCode"],
       },
     },
+    products: {
+      type: "array",
+      minItems: 100,
+      maxItems: 100,
+      items: {
+        type: "object",
+        properties: {
+          id: {
+            type: "integer",
+            autoIncrement: true,
+          },
+          imageUrl: {
+            type: "string",
+            faker: "image.image",
+          },
+          name: {
+            type: "string",
+            faker: "commerce.productName",
+          },
+          department: {
+            type: "string",
+            faker: "commerce.department",
+          },
+          price: {
+            type: "string",
+            faker: "commerce.price",
+          },
+          comment: {
+            type: "string",
+            faker: "lorem.sentence",
+          },
+        },
+        required: ["id", "name", "imageUrl", "department", "price", "comment"],
+      },
+    },
   },
-  required: ["persons", "address"],
+  required: ["persons", "addresses", "products"],
 };
 
 var jsf = require("json-schema-faker");

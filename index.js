@@ -16,8 +16,18 @@ server.use(defaultsMiddleware);
 // To handle POST, PUT and PATCH you need to use a body-parser
 // You can use the one used by JSON Server
 server.use(jsonServer.bodyParser);
+
 server.post("/api/persons", personMiddleware);
-server.post("/api/address", addressMiddleware);
+server.put("/api/persons", personMiddleware);
+server.patch("/api/persons", personMiddleware);
+
+server.post("/api/addresses", addressMiddleware);
+server.put("/api/addresses", addressMiddleware);
+server.patch("/api/addresses", addressMiddleware);
+
+server.post("/api/products", function (req, res, next) {
+  res.status(403).send("Not Allowed to Create a Product");
+});
 
 server.use(function (err, req, res, next) {
   if (err instanceof ValidationError) {
