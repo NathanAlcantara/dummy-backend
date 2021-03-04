@@ -2,6 +2,7 @@ const jsonServer = require("json-server");
 const { ValidationError } = require("express-json-validator-middleware");
 const data = require("./data");
 const personMiddleware = require("./middleware/person");
+const addressMiddleware = require("./middleware/address");
 
 const PORT = process.env.PORT || 3000;
 
@@ -16,6 +17,7 @@ server.use(defaultsMiddleware);
 // You can use the one used by JSON Server
 server.use(jsonServer.bodyParser);
 server.post("/api/persons", personMiddleware);
+server.post("/api/address", addressMiddleware);
 
 server.use(function (err, req, res, next) {
   if (err instanceof ValidationError) {
