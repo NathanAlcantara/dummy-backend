@@ -41,6 +41,29 @@ const schema = {
         required: ["id", "name", "age", "email", "phone"],
       },
     },
+    animals: {
+      type: "array",
+      minItems: 5,
+      maxItems: 5,
+      items: {
+        type: "object",
+        properties: {
+          id: {
+            type: "integer",
+            autoIncrement: true,
+          },
+          identification: {
+            type: "string",
+            faker: "name.firstName",
+          },
+          specie: {
+            type: "string",
+            faker: "random.word",
+          },
+        },
+        required: ["id", "identification", "specie"],
+      },
+    },
     addresses: {
       type: "array",
       minItems: 100,
@@ -108,7 +131,7 @@ const schema = {
       },
     },
   },
-  required: ["persons", "addresses", "products"],
+  required: ["persons", "animals", "addresses", "products"],
 };
 
 var jsf = require("json-schema-faker");
