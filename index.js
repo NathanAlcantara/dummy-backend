@@ -17,9 +17,9 @@ server.use(defaultsMiddleware);
 // You can use the one used by JSON Server
 server.use(jsonServer.bodyParser);
 
-server.post("/api/persons", personMiddleware);
-server.put("/api/persons", personMiddleware);
-server.patch("/api/persons", personMiddleware);
+server.post("/api/people", personMiddleware);
+server.put("/api/people", personMiddleware);
+server.patch("/api/people", personMiddleware);
 
 server.post("/api/addresses", addressMiddleware);
 server.put("/api/addresses", addressMiddleware);

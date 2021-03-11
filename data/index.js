@@ -9,7 +9,7 @@
 const schema = {
   type: "object",
   properties: {
-    persons: {
+    people: {
       type: "array",
       minItems: 100,
       maxItems: 100,
@@ -131,7 +131,7 @@ const schema = {
       },
     },
   },
-  required: ["persons", "animals", "addresses", "products"],
+  required: ["people", "animals", "addresses", "products"],
 };
 
 var jsf = require("json-schema-faker");
