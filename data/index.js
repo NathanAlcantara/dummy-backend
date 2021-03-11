@@ -11,8 +11,8 @@ const schema = {
   properties: {
     people: {
       type: "array",
-      minItems: 100,
-      maxItems: 100,
+      minItems: 10,
+      maxItems: 10,
       items: {
         type: "object",
         properties: {
@@ -43,8 +43,8 @@ const schema = {
     },
     animals: {
       type: "array",
-      minItems: 5,
-      maxItems: 5,
+      minItems: 10,
+      maxItems: 10,
       items: {
         type: "object",
         properties: {
@@ -66,8 +66,8 @@ const schema = {
     },
     addresses: {
       type: "array",
-      minItems: 100,
-      maxItems: 100,
+      minItems: 10,
+      maxItems: 10,
       items: {
         type: "object",
         properties: {
@@ -97,8 +97,8 @@ const schema = {
     },
     products: {
       type: "array",
-      minItems: 100,
-      maxItems: 100,
+      minItems: 10,
+      maxItems: 10,
       items: {
         type: "object",
         properties: {
