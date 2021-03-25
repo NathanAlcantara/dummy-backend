@@ -8,7 +8,6 @@ const validate = validator.validate;
 const schema = {
   type: "object",
   required: ["name", "age", "email", "phone"],
-  // required: ["name", "age", "email", "phone", "addressesId"],
   properties: {
     name: {
       type: "string",
